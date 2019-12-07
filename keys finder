@@ -1,0 +1,6 @@
+import os, binascii, hashlib, base58
+1DwP7dC7LXiANRS7QgHuAqpwKyGTJ87c5a = "80"+ binascii.hexlify(os.urandom(32)).decode()
+sha256a = hashlib.sha256(binascii.unhexlify(1DwP7dC7LXiANRS7QgHuAqpwKyGTJ87c5a)).hexdigest()
+sha256b = hashlib.sha256(binascii.unhexlify(sha256a)).hexdigest()
+WIF = base58.b58encode(binascii.unhexlify(1DwP7dC7LXiANRS7QgHuAqpwKyGTJ87c5a+sha256b[:8]))
+print(WIF)
